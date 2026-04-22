@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import hospitalIcon from "../assets/icons/hospital-building.png"
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function LoginPage() {
     <main className="login-page">
       <section className="login-card">
         <div className="login-header">
-          <div className="lh-icon">🔐</div>
+          <div className="lh-icon"><img src={hospitalIcon} alt="" /></div>
           <h2>Acesso ao Repositório</h2>
           <p>Entre com suas credenciais e selecione seu perfil de acesso</p>
         </div>
@@ -71,7 +72,6 @@ export default function LoginPage() {
               >
                 <option value="bolsista">Bolsista</option>
                 <option value="revisor">Revisor</option>
-                <option value="admin">Administrador</option>
               </select>
             </div>
 

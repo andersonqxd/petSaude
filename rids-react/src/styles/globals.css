@@ -672,9 +672,12 @@ main {
   text-align: center;
 }
 
-.login-header .lh-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75px; 
 }
 
 .login-header h2 {
