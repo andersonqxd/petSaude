@@ -1,22 +1,35 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import ThemeToggle from "../common/ThemeToggle";
+import { useEffect, useState } from "react";
+import hospitalIcon from "../../assets/icons/hospital-building.png";
 
 export default function Topbar() {
     const navigate = useNavigate();
 
+    const [theme, setTheme] = useState("light")
+
     const handleThemeToggle = () => {
-        const html = document.documentElement;
-        const currentTheme = html.getAttribute('data-theme') || 'ligth';
-        html.setAttribute('data-theme', currentTheme === 'dark' ? 'ligth':'dark');
+        setTheme((prev) => (prev ==="dark" ? "light" : "dark"));
     };
+
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme])
 
     return (
         <header>
         <nav className="topbar">
             <div className="brand" onClick={() => navigate('/')}>
-            <div className="brand-mark">＋</div>
+            <div className="brand-mark">
+                <img 
+                    src={hospitalIcon} 
+                    alt="Logo do repositório" 
+                    style={{ width: "20px", height: "20px", display: "block" }}
+                />
+            </div>
 
             <div>
-                <span className="brand-text">RIDS</span>
+                <span className="brand-text"> RIDS</span>
                 <span className="brand-sub">Repositório Nacional de Saúde Digital</span>
             </div>
             </div>
@@ -49,18 +62,22 @@ export default function Topbar() {
                 title="Alternar tema"
                 aria-label="Alternar tema"
             >
-                ◐
+                <ThemeToggle theme={theme} />
             </button>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <button type="button" className="btn-login">
+            <button 
+                type="button" 
+                className="btn-login"
+                onClick={() => navigate("/login")}
+            >
                 Entrar
             </button>
 
-            <button type="button" className="btn-nova">
+            {/* <button type="button" className="btn-nova">
                 Nova Iniciativa
-            </button>
+            </button> */}
             </div>
         </nav>
         </header>
